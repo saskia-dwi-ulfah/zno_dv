@@ -1317,9 +1317,9 @@ Multivariate plot berguna ketika kita ingin membandingkan suatu nilai dari beber
 ### Business Question
 ❓ Kita ingin mengetahui banyaknya video trending yang di-publish berdasarkan kategorinya (`category_id`) dan waktu publish-nya (`publish_when`). Di bawah ini adalah ilustrasi multivariate plot.
 
-Numerik: banyaknya video trending.
-Kategori1: kategori video.
-Kategori2: waktu publish.
+- Numerik: banyaknya video trending.
+- Kategori1: kategori video.
+- Kategori2: waktu publish.
 
 ```{r}
 knitr::include_graphics("assets/multivariate.png")
@@ -1363,12 +1363,13 @@ ggplot(data = vids_agg, mapping = aes(x = vid_count, y = reorder(category_id, vi
        y = "Category",
        fill = "Publish Time")
 ```
+
 * `position = "dodge"`: menampilkan nilai asli.
 * **Insight yang bisa diambil**: 
   - `publish_when` yang paling banyak di setiap kategori video.
   - Kita bisa melihat di kategori mana, `publish_when` tertentu memiliki frekuensi tertinggi.
 * **Insight pada plot**: 
-  - Jam publish date pada waktu 4pm to 12am paling trend video sport
+  - Jam publish date pada waktu 4pm to 12am paling trend video Sport
   - Jam publish date pada waktu 8am to 3pm paling trend video Gaminng, kemudian Entertainment
   - Jam publish date pada waktu 12am to 7am paling trend video Music.
   
@@ -1378,10 +1379,11 @@ ggplot(data = vids_agg, mapping = aes(x = vid_count, y = reorder(category_id, vi
 ggplot(data = vids_agg, mapping = aes(x = vid_count, y = reorder(category_id, vid_count), fill = publish_when)) + 
   geom_col(position = "stack")
 ```
-- `position = "stack"`: untuk menampilkan nilai asli dan proporsi (default).
-- **Insight yang bisa diambil**: 
+
+* `position = "stack"`: untuk menampilkan nilai asli dan proporsi (default).
+* **Insight yang bisa diambil**: 
   - Proporsi masing-masing kategori `publish_when` terhadap keseluruhan banyak video di suatu kategori.
-- **Insight pada plot**:
+* **Insight pada plot**:
   - Di mayoritas kategori video, kotak biru paling mendominasi. Video trending paling banyak di jam 8am - 3pm.
 
 ```{r}
@@ -1390,8 +1392,9 @@ ggplot(data = vids_agg, mapping = aes(x = vid_count, y = reorder(category_id, vi
 ggplot(data = vids_agg, mapping = aes(x = vid_count, y = reorder(category_id, vid_count), fill = publish_when)) + 
   geom_col(position = "fill")
 ```
-- `position = "fill"`: menampilkan proporsi (persen)
-- **Insight pada plot**:
+
+* `position = "fill"`: menampilkan proporsi (persen)
+* **Insight pada plot**:
   - Nonprogit & Acitivist (100% di 4 pm to 12 am).
   - Pets and Animals: ~ 80% biru, ~15% untuk warna hijau, ~5% untuk warna pink.
 
@@ -1648,13 +1651,13 @@ Berikut adalah referensi yang dapat mempermudah pemahaman kita mengenai `leaflet
 - [Cheatsheet `ggplot2`](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf).
 - [Data-to-Viz](https://www.data-to-viz.com/): ragam tipe data dan plot yang cocok untuk data tersebut. Dilengkapi contoh plot dan coding.
 - [`ggplot2` Extensions](https://exts.ggplot2.tidyverse.org/): fitur-fitur tambahan yang bisa diintegrasikan dengan `ggplot2`.
-- [HTML ColorCodes](https://htmlcolorcodes.com): untuk memilih warna custom dari internet
+- [HTML ColorCodes](https://htmlcolorcodes.com): untuk memilih warna custom dari internet.
 - [Image Color Picker](https://imagecolorpicker.com/).
 
 **By Algoritma**
 
-- [AlgoFAQ: Data Visualization](https://askalgo-r.netlify.app/#data-visualization)
-- [Contoh LBB DV: Rotten Tomatoes Data Visualization](https://rpubs.com/divakartika/rotten-tomatoes)
+- [AlgoFAQ: Data Visualization](https://askalgo-r.netlify.app/#data-visualization).
+- [Contoh LBB DV: Rotten Tomatoes Data Visualization](https://rpubs.com/divakartika/rotten-tomatoes).
 - [Geospatial Data Visualization with R Programming](https://algolearn.netlify.app/p/e-commerce_clothing_reviews/).
 
 
@@ -1701,13 +1704,11 @@ Bisa menggunakan fungsi `scale_fill_gradient2`. Berikut contoh penggunaannya.
 ggplot(data = top10_channel, mapping = aes(y = reorder(Var1, Freq), x = Freq)) + 
   geom_col(aes(fill = Freq)) + 
   scale_fill_gradient2(high = "black", low = "grey", mid = "red", midpoint=54) +
-  geom_text(aes(label = Freq), nudge_x = -5, color = "white")+
+  geom_text(aes(label = Freq), nudge_x = -5, color = "white")+ # nudge_x = untuk menggeser ke arah sumbu x
   labs(title = "Top 10 Channels with Most Trending Videos",
        y = "Channel Name",
        x = "Number of Trending Videos")
 
-# nudge_x = untuk menggeser ke arah sumbu x
-# silakan tambahkan judul pada plot dengan labs()
 ```
 
 ## Q: Bagaimana cara agar angka pada sumbu y ditampilkan setiap 1 juta pada pembuatan lineplot?
